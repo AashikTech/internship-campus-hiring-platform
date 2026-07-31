@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "name": "Run Backend (uvicorn)",
+      "type": "shell",
+      "command": ".venv\\Scripts\\uvicorn",
+      "args": ["app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always"
+      }
+    },
+    {
+      "name": "Run Tests (pytest)",
+      "type": "shell",
+      "command": ".venv\\Scripts\\pytest",
+      "args": ["-v"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always"
+      }
+    }
+  ]
+}

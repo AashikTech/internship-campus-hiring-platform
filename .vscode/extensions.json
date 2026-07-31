@@ -1,0 +1,32 @@
+{
+  "recommendations": [
+    "github.gitlens",
+    "bradlc.better-comments",
+    "mikestead.mqindent",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-toolsai.jupyter",
+    "redhat.vscode-yaml",
+    "bradlc.better-yaml",
+    "ms-azuretools.vscode-docker",
+    "editorconfig.editorconfig",
+    "errata-vscode.errata-prettier",
+    "ms-pyright.griffel",
+    "formobile.target",
+    "redhat.android",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "aaron-bond.better-comments",
+    "hookyqr.beautify",
+    "formulahendry.auto-rename-tag",
+    "zhuonuxu.black-format",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.flake8",
+    "soramizu.gluon-arrow-snippet",
+    "ms-montana.vscode-getters",
+    "gruntf.io.wordcount"
+  ],
+  "unwantedRecommendations": [
+    "github.copilot"
+  ]
+}
