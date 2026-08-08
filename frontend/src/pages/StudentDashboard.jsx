@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/client.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import TrustedCompanies from "../components/TrustedCompanies.jsx";
 
 export default function StudentDashboard() {
   const { user } = useAuth();
@@ -104,6 +105,7 @@ export default function StudentDashboard() {
           </ul>
         </div>
       </div>
+      <TrustedCompanies />
     </div>
   );
 }

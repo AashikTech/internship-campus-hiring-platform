@@ -26,9 +26,9 @@ export default function Login() {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-md-5 col-lg-4">
+      <div className="col-md-6 col-lg-5">
         <div className="card shadow-sm">
-          <div className="card-body p-4">
+          <div className="card-body p-4 p-lg-5">
             <h4 className="card-title mb-4">Login</h4>
             {error && <div className="alert alert-danger py-2">{error}</div>}
             <form onSubmit={handleSubmit}>

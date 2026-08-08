@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import api from "../api/client.js";
 import { useAuth } from "../context/AuthContext.jsx";
+import TrustedCompanies from "../components/TrustedCompanies.jsx";
 
 const emptyForm = {
   title: "",
@@ -200,6 +201,7 @@ export default function CompanyDashboard() {
           ))}
         </div>
       </div>
+      <TrustedCompanies />
     </div>
   );
 }
