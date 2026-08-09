@@ -98,3 +98,4 @@ classDiagram
     CompanyService --> InternshipPost
 ```
 
+![Module / Class Diagram](module-diagram.png)

@@ -79,4 +79,5 @@ erDiagram
     }
 ```
 
+![Entity Relationship Diagram](er-diagram.png)
 

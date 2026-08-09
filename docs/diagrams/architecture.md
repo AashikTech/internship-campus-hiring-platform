@@ -70,3 +70,4 @@ flowchart TB
     AuthService --> CI
 ```
 
+![Architecture Diagram](architecture.png)
