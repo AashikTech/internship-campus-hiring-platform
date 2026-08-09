@@ -17,9 +17,16 @@ ENV/
 .env.*
 !.env.example
 
-# React / frontend (added in Week 3)
+# React / frontend
 node_modules/
-frontend/
+frontend/node_modules/
+frontend/dist/
+
+# Browser test artifacts
+.playwright-mcp/
+
+# Local review notes (do not commit)
+REVIEW1_SCRIPT.md
 
 # Tests / coverage
 .pytest_cache/
