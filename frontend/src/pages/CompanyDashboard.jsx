@@ -26,8 +26,27 @@ export default function CompanyDashboard() {
   }
 
   async function loadApplicants(postId) {
-    const res = await api.get(`/companies/posts/${postId}/applicants`);
-    setApplicants((prev) => ({ ...prev, [postId]: res.data }));
+    if (applicants[postId] !== undefined) {
+      setApplicants((prev) => {
+        const next = { ...prev };
+        delete next[postId];
+        return next;
+      });
+      return;
+    }
+
+    setApplicants((prev) => ({ ...prev, [postId]: "loading" }));
+    try {
+      const res = await api.get(`/companies/posts/${postId}/applicants`);
+      setApplicants((prev) => ({ ...prev, [postId]: res.data }));
+    } catch (err) {
+      setApplicants((prev) => {
+        const next = { ...prev };
+        delete next[postId];
+        return next;
+      });
+      setMessage(err.response?.data?.detail || "Could not load applicants.");
+    }
   }
 
   useEffect(() => {
@@ -171,30 +190,38 @@ export default function CompanyDashboard() {
                     </span>
                   ))}
                 </div>
-                {applicants[p.id] && (
-                  <ul className="list-group">
-                    {applicants[p.id].map((a) => (
-                      <li className="list-group-item" key={a.id}>
-                        <div className="d-flex justify-content-between align-items-center">
-                          <div>
-                            <strong>{a.student_name}</strong> ({a.email})
-                            <div className="text-muted small">{a.cover_note || "No cover note"}</div>
-                          </div>
-                          <select
-                            className="form-select form-select-sm w-auto"
-                            defaultValue={a.status}
-                            onChange={(e) => updateStatus(a.id, e.target.value)}
-                          >
-                            <option value="applied">Applied</option>
-                            <option value="shortlisted">Shortlisted</option>
-                            <option value="interview">Interview</option>
-                            <option value="selected">Selected</option>
-                            <option value="rejected">Rejected</option>
-                          </select>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                {applicants[p.id] === "loading" ? (
+                  <p className="text-muted small mb-0">Loading applicants...</p>
+                ) : (
+                  Array.isArray(applicants[p.id]) && (
+                    applicants[p.id].length === 0 ? (
+                      <p className="text-muted small mb-0">No applicants yet.</p>
+                    ) : (
+                      <ul className="list-group">
+                        {applicants[p.id].map((a) => (
+                          <li className="list-group-item" key={a.id}>
+                            <div className="d-flex justify-content-between align-items-center">
+                              <div>
+                                <strong>{a.student_name}</strong> ({a.email})
+                                <div className="text-muted small">{a.cover_note || "No cover note"}</div>
+                              </div>
+                              <select
+                                className="form-select form-select-sm w-auto"
+                                defaultValue={a.status}
+                                onChange={(e) => updateStatus(a.id, e.target.value)}
+                              >
+                                <option value="applied">Applied</option>
+                                <option value="shortlisted">Shortlisted</option>
+                                <option value="interview">Interview</option>
+                                <option value="selected">Selected</option>
+                                <option value="rejected">Rejected</option>
+                              </select>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )
+                  )
                 )}
               </div>
             </div>
